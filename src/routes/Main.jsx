@@ -57,15 +57,13 @@ export default function Main() {
   return (
     <main>
       <h1>Pokedex</h1>
-      <ul>
-        {pokemonData.map((pokemon, i) => (
-          <Card
-            key={i}
-            imageUrl={pokemon.sprite}
-            name={pokemon.name}
-          />
-        ))}
-      </ul>
+      {pokemonData.map((pokemon, i) => (
+        <Card
+          key={i}
+          imageUrl={pokemon.sprite}
+          name={pokemon.name}
+        />
+      ))}
     </main>
   )
 }
