@@ -1,0 +1,19 @@
+nav {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  background-color: #202020;
+}
+
+nav>img {
+  width: 30px;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+nav>span {
+  color: lightgray;
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+}
