@@ -1,14 +1,19 @@
 import { useState } from 'react'
 import './App.css'
-import Main from './routes/Main'
+import MainPage from './routes/Main'
+import PokemonDetails from './routes/PokemonDetails'
 import Navbar from './components/Navbar'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 function App() {
   return (
-    <>
+    <Router>
       <Navbar />
-      <Main />
-    </>
+      <Routes>
+        <Route path="/" element={<MainPage />}></Route>
+        <Route path="/details" element={<PokemonDetails />}></Route>
+      </Routes>
+    </Router>
   )
 }
 
