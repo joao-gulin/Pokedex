@@ -1,3 +1,4 @@
+// Main.js
 import { useState, useEffect } from "react";
 import Card from "../components/Card";
 import "../styles/Main.css";
@@ -21,7 +22,7 @@ export default function Main() {
 
   async function fetchAllPokemon() {
     try {
-      const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=150");
+      const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151");
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -36,6 +37,7 @@ export default function Main() {
           return {
             name: detailsData.name,
             sprite: detailsData.sprites.front_default,
+            types: detailsData.types.map((typeInfo) => typeInfo.type.name),
           };
         })
       );
@@ -66,9 +68,15 @@ export default function Main() {
 
       <div className="cards">
         {filteredPokemon.map((pokemon, i) => (
-          <Card key={i} imageUrl={pokemon.sprite} name={pokemon.name} />
+          <Card
+            key={i}
+            imageUrl={pokemon.sprite}
+            name={pokemon.name}
+            types={pokemon.types}
+          />
         ))}
       </div>
     </main>
   );
 }
+

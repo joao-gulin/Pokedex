@@ -5,60 +5,94 @@ main {
   margin-top: 20px;
 }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
-  padding: 15px;
-  width: 100%;
-  max-width: 1200px;
-}
-
-.card {
-  background-color: #DCDCDC;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 16px;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  /* Center content vertically */
-  align-items: center;
-  /* Center content horizontally */
-  width: 100%;
-  min-height: 200px;
-  /* Set a minimum height instead of fixed height */
-}
-
-.card img {
-  max-width: 100%;
-  max-height: 100px;
-  /* Limit the height of the image */
-  height: auto;
-  margin-bottom: 16px;
-  object-fit: contain;
-  /* Ensure the image scales correctly within its container */
-}
-
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 1);
-  cursor: pointer;
-}
-
-.card p {
-  text-transform: capitalize;
-  margin-top: 8px;
-  font-size: 1.2em;
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 input {
   text-align: center;
   height: 40px;
   font-size: 1rem;
+}
+
+.type-normal {
+  color: #A8A878;
+}
+
+.type-fire {
+  color: #F08030;
+}
+
+.type-water {
+  color: #6890F0;
+}
+
+.type-electric {
+  color: #F8D030;
+}
+
+.type-grass {
+  color: #78C850;
+}
+
+.type-ice {
+  color: #98D8D8;
+}
+
+.type-fighting {
+  color: #C03028;
+}
+
+.type-poison {
+  color: #A040A0;
+}
+
+.type-ground {
+  color: #E0C068;
+}
+
+.type-flying {
+  color: #A890F0;
+}
+
+.type-psychic {
+  color: #F85888;
+}
+
+.type-bug {
+  color: #A8B820;
+}
+
+.type-rock {
+  color: #B8A038;
+}
+
+.type-ghost {
+  color: #705898;
+}
+
+.type-dragon {
+  color: #7038F8;
+}
+
+.type-dark {
+  color: #705848;
+}
+
+.type-steel {
+  color: #B8B8D0;
+}
+
+.type-fairy {
+  color: #EE99AC;
+}
+
+.types {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.type {
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  font-size: 0.9em;
 }
