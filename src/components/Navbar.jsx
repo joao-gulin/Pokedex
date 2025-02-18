@@ -5,15 +5,15 @@ import { useNavigate } from "react-router-dom"
 export default function Navbar() {
   const navigate = useNavigate();
 
-  const goToHomePage = (
+  const handleGoHome = () => {
     navigate("/")
-  )
+  }
 
   return (
     <header>
       <nav>
         <img src={PokemonLogo} alt="PokemonLogo" />
-        <span onClick={goToHomePage}>Pokedex</span>
+        <span onClick={handleGoHome}>Pokedex</span>
       </nav>
     </header>
   )
