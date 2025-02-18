@@ -3,15 +3,22 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "../components/Card";
 import "../styles/Main.css";
+import { useNavigate } from "react-router-dom";
+import { usePokemon } from "../contexts/PokemonContext";
 
 export default function Main() {
-  const [allPokemon, setAllPokemon] = useState([]);
+  const { allPokemon, setAllPokemon } = usePokemon();
   const [filteredPokemon, setFilteredPokemon] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetchAllPokemon();
-  }, []);
+    if (allPokemon.length === 0) {
+      fetchAllPokemon()
+    } else {
+      setFilteredPokemon(allPokemon)
+    }
+  }, [allPokemon]);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -49,6 +56,10 @@ export default function Main() {
     setFilteredPokemon(filtered);
   }
 
+  const handlePokemonClick = (name) => {
+    navigate(`/pokemon/${name}`)
+  }
+
   return (
     <main>
       <div className="search-bar">
@@ -62,12 +73,13 @@ export default function Main() {
 
       <div className="cards">
         {filteredPokemon.map((pokemon, i) => (
-          <Card
-            key={i}
-            imageUrl={pokemon.sprite}
-            name={pokemon.name}
-            types={pokemon.types}
-          />
+          <div key={i} onClick={() => handlePokemonClick(pokemon.name)}>
+            <Card
+              imageUrl={pokemon.sprite}
+              name={pokemon.name}
+              types={pokemon.types}
+            />
+          </div>
         ))}
       </div>
     </main>
