@@ -38,7 +38,8 @@ export default function Main() {
             name: detailsResponse.data.name,
             sprite: detailsResponse.data.sprites.front_default,
             // Array map for the types in case a pokemon has more than one type
-            types: detailsResponse.data.types.map((typeInfo) => typeInfo.type.name)
+            types: detailsResponse.data.types.map((typeInfo) => typeInfo.type.name),
+            moves: detailsResponse.data.moves.map((moveInfo) => moveInfo.move.name).slice(0, 10),
           }
         })
       )

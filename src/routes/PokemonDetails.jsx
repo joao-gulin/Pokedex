@@ -11,6 +11,8 @@ export default function PokemonDetails() {
 
   const getTypeClass = (type) => `type-${type.toLowerCase()}`
 
+  const displayedMoves = pokemon.moves.slice(0, 10);
+
   return (
     <div className="pokemon-details-grid">
       <div className="pokemon-image-card">
@@ -33,6 +35,11 @@ export default function PokemonDetails() {
         <div className="section-divider" />
         <div className="moves">
           <h2>Moves</h2>
+          <ul>
+            {displayedMoves.map((move, index) => (
+              <li key={index}>{move}</li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>
