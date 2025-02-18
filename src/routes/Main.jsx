@@ -1,5 +1,6 @@
 // Main.js
 import { useState, useEffect } from "react";
+import axios from "axios";
 import Card from "../components/Card";
 import "../styles/Main.css";
 
@@ -22,30 +23,22 @@ export default function Main() {
 
   async function fetchAllPokemon() {
     try {
-      const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=151");
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const data = await response.json();
+      const response = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=151")
       const pokemonDetails = await Promise.all(
-        data.results.map(async (pokemon) => {
-          const detailsResponse = await fetch(pokemon.url);
-          if (!detailsResponse.ok) {
-            throw new Error("Network response was not ok");
-          }
-          const detailsData = await detailsResponse.json();
+        response.data.results.map(async (pokemon) => {
+          const detailsResponse = await axios.get(pokemon.url);
           return {
-            name: detailsData.name,
-            sprite: detailsData.sprites.front_default,
-            // fetching pokemon types (mapping in cases of a pokemon that has more than one type)
-            types: detailsData.types.map((typeInfo) => typeInfo.type.name),
-          };
+            name: detailsResponse.data.name,
+            sprite: detailsResponse.data.sprites.front_default,
+            // Array map for the types in case a pokemon has more than one type
+            types: detailsResponse.data.types.map((typeInfo) => typeInfo.type.name)
+          }
         })
-      );
-      setAllPokemon(pokemonDetails);
-      setFilteredPokemon(pokemonDetails);
+      )
+      setAllPokemon(pokemonDetails)
+      setFilteredPokemon(pokemonDetails) // Start with no filter
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("Error fetching data:", error)
     }
   }
 
