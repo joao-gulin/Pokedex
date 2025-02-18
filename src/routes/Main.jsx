@@ -37,6 +37,7 @@ export default function Main() {
           return {
             name: detailsData.name,
             sprite: detailsData.sprites.front_default,
+            // fetching pokemon types (mapping in cases of a pokemon that has more than one type)
             types: detailsData.types.map((typeInfo) => typeInfo.type.name),
           };
         })
